@@ -1,0 +1,78 @@
+<Statistics>
+    name: 'stats'
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "./assets/app_bg.png"
+    FloatLayout:
+        MDRectangleFlatIconButton:
+            icon: "chevron-left"
+            text: "[color=#35353f]Back[/color]"
+            markup: True
+            font_name: './assets/fonts/Rubik-Bold.ttf'
+            font_size: '24sp'
+            line_color: 1, 0, 1, 0
+            theme_icon_color: "Custom"
+            icon_color: app.colors(0)
+            pos_hint: {'center_x':.05, 'center_y': .95}
+            on_release: app.root.current = 'lobby'
+        
+        MDLabel:
+            text: '[color=#35353f]STATISTICS[/color]'
+            font_style: 'H2'
+            markup: True
+            font_name: "./assets/fonts/Rubik-SemiBold.ttf"
+            pos_hint: {'center_x': .53, 'center_y': .81}
+            
+        MDLabel:
+            text: '[font=./assets/fonts/Rubik-SemiBold.ttf][color=#ffffff]Number of Customer every Two Hours[/color][/font]'
+            markup: True
+            font_style: 'H5'
+            pos_hint: {'center_x':.61, 'center_y': .7}
+        MDLabel:
+            text: '[font=./assets/fonts/Rubik-SemiBold.ttf][color=#ffffff]Number of Customer per Day[/color][/font]'
+            markup: True
+            font_style: 'H5'
+            pos_hint: {'center_x': 1.15, 'center_y': .7}
+        AKBarChart:
+            id: chartAF
+            size_hint: .3, .3
+            pos_hint: {'center_x': .25, 'center_y': .5}
+            x_values: [1,2,3,4,5,6]
+            y_values: root.data_list
+            label_size: dp(12)
+            labels: True
+            anim: True
+            y_labels: root.data_str
+            x_labels: ['10AM','12PM','2PM','4PM','6PM','8PM']
+            bars_color: app.colors(2)
+            labels_color: app.colors(2)
+            lines_color: app.colors(2)
+            bg_color: app.colors(0)
+
+        AKBarChart:
+            id: chartAF2
+            size_hint: .3, .3
+            pos_hint: {'center_x': .75, 'center_y': .5}
+            x_values: root.data_list2
+            y_values: root.data_list2
+            label_size: dp(12)
+            #labels: True
+            anim: True
+            y_labels: root.data_str2
+            x_labels: ["yesterday", "2 days ago", "3 days ago", "4 days ago", '5 days ago', '6 days ago', '7 days ago']
+            bars_color: app.colors(1)
+            labels_color: app.colors(1)
+            lines_color: app.colors(1)
+            bg_color: app.colors(2)
+
+        MDBoxLayout:
+            adaptive_height: True
+
+            MDRaisedButton:
+                text: "[color=#09AF79]update[color]"
+                md_bg_color: app.colors(1)
+                markup: True
+

@@ -1,5 +1,4 @@
 
-
 <Lobby>
     name: 'lobby'
 
@@ -11,32 +10,41 @@
 
     FloatLayout:
         ColoredLabel:
-            text: '10000'
+            text: str(root.visitors)
             font_name: './assets/fonts/Rubik-Medium.ttf'
             font_size: '40sp'
-            size_hint: None,None
+            size_hint: None, None
+            
+        MDIconButton:
+            icon: 'chart-box-outline'
+            user_font_size: '48sp'
+            theme_text_color: 'Custom'
+            text_color: app.colors(2)
+            pos_hint: {'center_x': .95, 'center_y': .9}
+            on_release: app.root.current = 'stats'
 
         RightSide:
 
 
         MDLabel:
-            text: "[font=./assets/fonts/Rubik-Medium.ttf][color=#ffffff]Yesterday's Visitor \n           Count[/color][/font]"
+            text: "[font=./assets/fonts/Rubik-Medium.ttf][color=#ffffff]Customer Count \n       Yesterday[/color][/font]"
             markup: True
             font_style: 'H3'
-            pos_hint: {'center_x': .6, 'center_y': .55}
+            pos_hint: {'center_x': .62, 'center_y': .55}
         Image:
             source: './assets/qr_lobby.png'
             size_hint_y: None  # Tells the layout to ignore the size_hint in y dir
-            height: dp(400)
-            pos_hint: {'center_x': .23, 'center_y': .3}
+            height: dp(500)
+            pos_hint: {'center_x': .245, 'center_y': .3}
         MDLabel:
             text: "[font=./assets/fonts/Rubik-Medium.ttf][color=#ffffff]Scan me for instructions![/color][/font]"
             markup: True
             font_style: 'H5'
-            pos_hint: {'center_x': .63, 'center_y': .18}
+            pos_hint: {'center_x': .645, 'center_y': .18}
+
 <ColoredLabel@Label>:
     size: (200, 200)
-    pos: (250, 550)
+    pos: (280, 550)
 
     canvas.before:
         Color:
@@ -48,9 +56,9 @@
             angle_end: 360
 
 
-<RightSide@BoxLayout>
+<RightSide>
     pos_hint: {'center_x': 1.2, 'center_y': .8}    
-    spacing: '20sp'
+    spacing: '30sp'
     orientation: 'vertical'
 
     FloatLayout:
@@ -61,24 +69,29 @@
             pos_hint: {'center_x': .45, 'center_y': .2}
 
 
+
     MDRaisedButton:
         text: f"[font=./assets/fonts/Rubik-Medium.ttf][color=#ffffff]Scan[/color][/font]"
         font_size: "18sp"
         size_hint_x: .1
         md_bg_color:app.colors(1)
-        on_release: app.root.current = 'scanner'
+        on_release: root.scan_butt()
 
     MDRaisedButton:
         text: f"[font=./assets/fonts/Rubik-Medium.ttf][color=#ffffff]Export[/color][/font]"
         font_size: "18sp"
         size_hint_x: .1
         md_bg_color:app.colors(1)
+        on_release: 
+            root.export_data()
+            root.show_toast()
 
     MDRaisedButton:
         text: f"[font=./assets/fonts/Rubik-Medium.ttf][color=#ffffff]About[/color][/font]"
         font_size: "18sp"
         size_hint_x: .1
         md_bg_color:app.colors(1)
+        on_release: app.root.current = 'about'
 
     MDRaisedButton:
         text: f"[font=./assets/fonts/Rubik-Medium.ttf][color=#ffffff]Logout[/color][/font]"
@@ -87,3 +100,29 @@
         size_hint_x: .1
         md_bg_color: app.colors(1)
         on_release: app.root.current = 'login'
+
+<SetCustomer>
+    usr_int:usr_int
+    orientation: "vertical"
+    spacing: "2dp"
+    size_hint_y: None
+    #size_hint: .3, .5
+    height: "60dp"
+
+    MDTextField:
+        id: usr_int
+        size_hint_y: .2
+        hint_text: 'Enter the limit.'
+        multiline: False
+        write_tab: False
+        mode: 'rectangle'
+        pos_hint: {'center_x': .5, 'center_y': .8}
+
+    # MDRaisedButton:
+    #     text: f"[font=./assets/fonts/Rubik-Medium.ttf][color=#ffffff]Done[/color][/font]"
+    #     markup: True
+    #     font_size: "18sp"
+    #     size_hint: .1, .2
+    #     md_bg_color: app.colors(1)
+    #     on_release: if root.verify_entry() == True: app.root.current = 'scanner'
+

@@ -28,13 +28,13 @@
         Loading:
 
         MDLabel:
-            text: "[font=./assets/fonts/Rubik-Light.ttf]TRACE[/font]"
+            text: "[font=./assets/fonts/Rubik-Bold.ttf]YOU TRACE\n          ME[/font]"
             markup: True
             pos_hint: {'x': .2}
-            font_size: '128sp'
+            font_size: '64sp'
             theme_text_color: 'Custom'
             text_color: rgba('#35353f')
-            pos_hint: {'center_x': .6, 'center_y': .35}
+            pos_hint: {'center_x': .62, 'center_y': .3}
 
         LoginForm:
 
@@ -43,37 +43,41 @@
     usr_pass: usr_pass
 
     MDLabel:
-        text: "[font=./assets/fonts/Rubik-Light.ttf]Welcome[/font]"
+        text: "[font=./assets/fonts/Rubik-Light.ttf]Welcome![/font]"
         markup: True
         font_style: 'H1'
         theme_text_color: 'Custom'
         text_color: 1,1,1,1
-        pos_hint: {'center_x': 1.15, 'center_y': .7 }
+        pos_hint: {'center_x': 1.11, 'center_y': .7 }
 
     MDTextFieldRect:
         id: usr_name
-        font_size: '28sp'
+        font_size: '23sp'
         size_hint: .3, .05
         hint_text: "Username or Email"
         height: dp(30)
         pos_hint: {'center_x': .75, 'center_y': .5 }
+        multiline: False
+        write_tab: False
 
     MDTextFieldRect:
         id: usr_pass
-        font_size: '28sp'
+        font_size: '23sp'
         hint_text: "Password"
         size_hint: .3, .05
         height: dp(30)
         pos_hint: {'center_x': .75, 'center_y': .4}
         password: True
         password_mask: '•'
+        multiline: False
+        write_tab: False
 
     MDRaisedButton:
         text: '[font=./assets/fonts/Rubik-SemiBold.ttf][color=#ffffff]      Login       [/color][/font]'
         markup: True
         elevation: 16
         md_bg_color: rgba('#09AF79')
-        font_size: '32sp'
+        font_size: '24sp'
         pos_hint: {'center_x': .75, 'center_y': .3}
         #size_hint_x: .1
         on_release: if root.usr_login() == True: app.root.current = 'lobby'

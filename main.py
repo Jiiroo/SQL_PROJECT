@@ -4,19 +4,15 @@ from kivy.utils import rgba
 from kivymd.app import MDApp
 from kivy.lang.builder import Builder
 from kivy.properties import StringProperty, NumericProperty
-from libs.baseclass import login, lobby, scanner
+from libs.baseclass import login, lobby, scanner, db_conn, statistics, about
 from kivy.core.window import Window
 
 Window.fullscreen = False
 
 
-
 class MyApp(MDApp):
-    product_category = StringProperty()
-    log_usr = StringProperty()
-    product_index = NumericProperty()
-    selected = StringProperty('')
-    selected2 = StringProperty('')
+    capacity = NumericProperty(20)
+
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -27,8 +23,6 @@ class MyApp(MDApp):
         kv_run = Builder.load_file("main.kv")
         return kv_run
         
-
-
     def colors(self, color_code):
         if color_code == 0:
             color_rgba = '#35353f'

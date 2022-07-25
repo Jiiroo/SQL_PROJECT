@@ -1,0 +1,62 @@
+
+<About>
+    name: 'about'
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "./assets/app_bg.png"
+
+    FloatLayout:
+        
+        MDRectangleFlatIconButton:
+            icon: "chevron-left"
+            text: "[color=#35353f]Back[/color]"
+            markup: True
+            font_name: './assets/fonts/Rubik-Bold.ttf'
+            font_size: '24sp'
+            line_color: 1, 0, 1, 0
+            theme_icon_color: "Custom"
+            icon_color: app.colors(0)
+            pos_hint: {'center_x':.05, 'center_y': .95}
+            on_release: app.root.current = 'lobby'
+
+        MDLabel:
+            text: '[color=#35353f]ABOUT APP[/color]'
+            font_style: 'H2'
+            markup: True
+            font_name: "./assets/fonts/Rubik-SemiBold.ttf"
+            pos_hint: {'center_x': .53, 'center_y': .81}
+
+        MDLabel:
+            text: '[color=#ffffff]Objectives[/color]'
+            font_style: 'H3'
+            markup: True
+            font_name: "./assets/fonts/Rubik-SemiBold.ttf"
+            pos_hint: {'center_x': .53, 'center_y': .7}
+
+        MDLabel:
+            text: f'[color=#ffffff]{root.text1}[/color]'
+            font_style: 'H6'
+            markup: True
+            font_name: "./assets/fonts/Rubik-Medium.ttf"
+            pos_hint: {'center_x': .51, 'center_y': .4}
+
+############################
+
+        MDLabel:
+            text: '[color=#ffffff]System Description[/color]'
+            font_style: 'H3'
+            markup: True
+            font_name: "./assets/fonts/Rubik-SemiBold.ttf"
+            pos_hint: {'center_x': 1.1, 'center_y': .7}
+
+        MDLabel:
+            text: f'[color=#ffffff]{root.text2}[/color]'
+            font_style: 'H6'
+            markup: True
+            font_name: "./assets/fonts/Rubik-Medium.ttf"
+            pos_hint: {'center_x': 1.02, 'center_y': .45}
+        
+        
